@@ -4,6 +4,13 @@ module.exports = {
     new: newFlight,
     create,
     index,
+    show,
+}
+
+
+async function index(req, res){
+    let flights = await Flight.find();
+    res.render('flights', { flights })
 }
 
 function newFlight(req, res){
@@ -17,13 +24,25 @@ async function create(req, res) {
     try {
         await Flight.create(req.body)
         res.redirect('flights')
-    } catch (error) {
-        console.log(error)
-        res.render('flights/new', {errorMsg: error.message})
+    } catch (err) {
+        console.log(err)
+        res.render('flights/new', {errorMsg: err.message})
+     
     }
 }
 
-async function index(req, res) {
-    let flights = await Flight.find();
-    res.render('flights', { flights })
+
+async function show(req, res){
+    try{
+    const flight = await Flight.findById(req.params.id)
+    const destinations = flight.destination 
+
+    res.render('flights/show', {
+        title: 'Flight Details', 
+        flight,
+        destinations,
+    })
+    } catch (err){
+        console.log('Error MSG: ', err)
+    }
 }

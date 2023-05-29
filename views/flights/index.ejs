@@ -36,6 +36,7 @@
             <td><%= m.flightNo %></td>
             <td><%= m.departs %></td>
             <td><form action="/flights/<%=m.id %>" method="GET">
+            <label><a href="/flights/<%=m.id %>">Show Flight Details</a></label></form></td>
           </tr>
           <% }) %> 
        
