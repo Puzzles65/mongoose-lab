@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  
+</head>
+<body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+          |
+        <a href="/flights">All Flights</a>
+          |
+        <a href="/flights/new">Add Flight</a>
+      </nav>
+    </header>
+    
+
+<h2>Add new flight</h2>
+<form action="/flights" method="POST">
+  <label>Airline:
+    <select name="airline">
+      <option value="American">American</option>
+      <option value="Southwest">Southwest</option>
+      <option value="United">United</option>
+    </select>
+  </label><br>
+  <label>Airport:
+    <select name="airport">
+      <option value="AUS">AUS</option>
+      <option value="DFW">DFW</option>
+      <option value="DEN">DEN</option>
+      <option value="LAX">LAX</option>
+      <option value="SAN">SAN</option>
+    </select>
+  </label><br>
+  <label>Flight number:
+    <input type="number" name="flightNo">
+  </label><br>
+  <label>Departure:
+    <input type="date" name="departs">
+  </label><br>
+  <button type="submit">Add Flight</button>
+</form>
+<p><%= errorMsg %></p>
+
+  
+<footer>&copy; General Assembly SEI72</footer>
+</body>
+</html>

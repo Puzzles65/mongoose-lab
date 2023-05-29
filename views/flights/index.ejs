@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+          |
+        <a href="/flights">All Flights</a>
+          |
+        <a href="/flights/new">Add Flight</a>
+      </nav>
+    </header>
+
+    <h2>Flight List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Airline</th>
+          <th>Airport</th>
+          <th>Flight Number</th>
+          <th>Departs</th>
+        </tr>
+      </thead>
+      <tbody>
+         <% flights.forEach(function(m){ %>
+          
+          <tr>
+            <td><%= m.airline %></td>
+            <td><%= m.airport %></td>
+            <td><%= m.flightNo %></td>
+            <td><%= m.departs %></td>
+            <td><form action="/flights/<%=m.id %>" method="GET">
+          </tr>
+          <% }) %> 
+       
+      </tbody>
+    </table>    
+
+    <footer>&copy; General Assembly SEI72</footer>
+</body>
+</html>    
