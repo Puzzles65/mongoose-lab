@@ -37,6 +37,46 @@
     </tbody>
 </table>
 
+<h2>Flight Details</h2>
+<h3>Flight Information</h3>
+<p>Airline: <%= flight.airline %></p>
+<p>Airport: <%= flight.airport %></p>
+<p>Flight Number: <%= flight.flightNo %></p>
+<p>Departs: <%= flight.departs %></p>
+
+<h3>Add Destination</h3>
+<form action="/flights/destinations" method="POST">
+  <label>Airport:
+    <select name="airport">
+      <option value="AUS">AUS</option>
+      <option value="DFW">DFW</option>
+      <option value="DEN">DEN</option>
+      <option value="LAX">LAX</option>
+      <option value="SAN">SAN</option>
+    </select>
+  </label><br>
+  <label>Arrival:
+    <input type="datetime-local" name="arrival">
+  </label><br>
+  <button type="submit">Add Destination</button>
+</form>
+
+<h3>Destinations</h3>
+<% console.log('Destinations:', destinations); %>
+<% if (destinations && destinations.length > 0) { %>
+  <ul>
+    <% destinations.forEach(function(destination) { %>
+      <li>
+        Airport: <%= destination.airport %>,
+        Arrival: <%= destination.arrival %>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>No destinations added for this flight.</p>
+<% } %>
+
+
 <footer>&copy; General Assembly SEI72</footer>
 </body>
 </html>
